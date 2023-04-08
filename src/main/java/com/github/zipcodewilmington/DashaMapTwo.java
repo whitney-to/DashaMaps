@@ -1,10 +1,20 @@
 package com.github.zipcodewilmington;
 
-public class DashaMapTwo {
+public class DashaMapTwo<K,V> extends DashaMap<K,V> {
+    public DashaMapTwo(){
+        super();
+    }
 
-    private String HashFunctionTwo(String input) {
-        if (input.length() > 0) {
-            return String.valueOf(input.charAt(1)).toLowerCase();
+    @Override
+    public Integer hashFunction(K input) {
+        if(input instanceof String){
+            if (((String) input).length() > 1) {
+                return ((String) input).toLowerCase().charAt(1) - 'a';
+            } else if (((String) input).length() == 1) {
+                return ((String) input).toLowerCase().charAt(0) - 'a';
+            }
+        } else {
+            return input.hashCode() % 26;
         }
         return null;
     }

@@ -30,6 +30,7 @@ public abstract class DashaMap<K,V> implements HashMapX<K,V>{
         return list;
     }
 
+    // Maybe having bitwise shuffling the key when k is not String
     public abstract Integer hashFunction(K input);
 
     @Override
